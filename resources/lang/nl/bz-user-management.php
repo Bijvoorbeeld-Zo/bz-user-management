@@ -3,6 +3,7 @@
 return [
     'users' => 'Gebruikers',
     'user' => 'Gebruiker',
+    'nav_group' => 'Beheer',
     'name' => 'Naam',
     'email' => 'Email',
     'roles' => 'Rollen',

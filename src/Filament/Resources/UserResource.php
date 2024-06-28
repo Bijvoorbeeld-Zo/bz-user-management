@@ -136,4 +136,9 @@ class UserResource extends Resource
     {
         return __('bz-user-management::bz-user-management.user');
     }
+
+    public static function getNavigationGroup(): ?string
+    {
+        return __('bz-user-management::bz-user-management.nav_group');
+    }
 }
