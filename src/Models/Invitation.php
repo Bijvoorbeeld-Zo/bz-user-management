@@ -10,4 +10,8 @@ class Invitation extends Model
         'email',
         'roles',
     ];
+
+    protected $casts = [
+        'roles' => 'array',
+    ];
 }

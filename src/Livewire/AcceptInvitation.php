@@ -73,6 +73,8 @@ class AcceptInvitation extends SimplePage
             'email' => $this->invitationModel->email,
         ]);
 
+        $user->roles()->attach($this->invitationModel->roles);
+
         auth()->login($user);
 
         $this->invitationModel->delete();
