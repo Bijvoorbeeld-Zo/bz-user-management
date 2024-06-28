@@ -141,4 +141,9 @@ class UserResource extends Resource
     {
         return __('bz-user-management::bz-user-management.nav_group');
     }
+
+    public static function getNavigationSort(): ?int
+    {
+        return config('bz-user-management.navigation_sort');
+    }
 }
