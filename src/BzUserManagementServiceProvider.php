@@ -16,7 +16,9 @@ class BzUserManagementServiceProvider extends PackageServiceProvider
         $package
             ->name('bz-user-management')
             ->hasViews()
+            ->hasConfigFile('bz-user-management')
             ->hasMigrations('create_invitations_table')
+            ->hasTranslations()
             ->hasRoute('web')
             ->hasInstallCommand(function (InstallCommand $installCommand) {
                 $installCommand->publishMigrations();

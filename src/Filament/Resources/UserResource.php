@@ -7,7 +7,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Support\Colors\Color;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
@@ -31,9 +30,11 @@ class UserResource extends Resource
         return $form
             ->schema([
                 TextInput::make('name')
+                    ->label(__('bz-user-management::bz-user-management.name'))
                     ->required(),
 
                 TextInput::make('email')
+                    ->label(__('bz-user-management::bz-user-management.email'))
                     ->unique(ignoreRecord: true)
                     ->required()
                     ->disabledOn('edit'),
@@ -55,10 +56,11 @@ class UserResource extends Resource
                     ->visibleOn('create'),
 
                 Select::make('roles')
+                    ->label(__('bz-user-management::bz-user-management.roles'))
                     ->relationship('roles', 'name')
                     ->multiple()
                     ->preload()
-                    ->searchable()
+                    ->searchable(),
             ]);
     }
 
@@ -73,19 +75,23 @@ class UserResource extends Resource
                     ->circular(),
 
                 TextColumn::make('name')
+                    ->label(__('bz-user-management::bz-user-management.name'))
                     ->description(fn (User $record) => $record->email)
                     ->searchable()
                     ->sortable(),
 
                 TextColumn::make('roles.name')
+                    ->label(__('bz-user-management::bz-user-management.roles'))
                     ->limitList(3)
                     ->formatStateUsing(fn ($state): string => Str::headline($state))
                     ->badge(),
 
                 TextColumn::make('updated_at')
+                    ->label(__('bz-user-management::bz-user-management.updated_at'))
                     ->datetime('d-m-Y H:i'),
 
                 TextColumn::make('created_at')
+                    ->label(__('bz-user-management::bz-user-management.created_at'))
                     ->datetime('d-m-Y H:i'),
             ])
             ->filters([
@@ -114,5 +120,20 @@ class UserResource extends Resource
     public static function getGloballySearchableAttributes(): array
     {
         return ['name', 'email'];
+    }
+
+    public static function getNavigationLabel(): string
+    {
+        return __('bz-user-management::bz-user-management.users');
+    }
+
+    public static function getPluralLabel(): string
+    {
+        return __('bz-user-management::bz-user-management.users');
+    }
+
+    public static function getLabel(): ?string
+    {
+        return __('bz-user-management::bz-user-management.user');
     }
 }

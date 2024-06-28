@@ -19,6 +19,7 @@ class EditUser extends EditRecord
     {
         return [
             Action::make('reset_password')
+                ->label(__('bz-user-management::bz-user-management.reset_password'))
                 ->form([
                     TextInput::make('password')
                         ->label(__('filament-panels::pages/auth/register.form.password.label'))
@@ -27,6 +28,7 @@ class EditUser extends EditRecord
                         ->rule(Password::default())
                         ->same('confirm_password')
                         ->validationAttribute(__('filament-panels::pages/auth/register.form.password.validation_attribute')),
+
                     TextInput::make('confirm_password')
                         ->label(__('filament-panels::pages/auth/register.form.password_confirmation.label'))
                         ->password()

@@ -21,9 +21,11 @@ class ListUsers extends ListRecords
     {
         return [
             Action::make('invite_user')
+                ->label(__('bz-user-management::bz-user-management.invite_user'))
                 ->modalWidth(MaxWidth::ExtraLarge)
                 ->form([
                     TextInput::make('email')
+                        ->label(__('bz-user-management::bz-user-management.email'))
                         ->required(),
                 ])
                 ->action(function ($data) {
@@ -32,7 +34,7 @@ class ListUsers extends ListRecords
                     Mail::to($invitation->email)->send(new InvitationMail($invitation));
 
                     Notification::make('invited_success')
-                        ->body('User invited successfully!')
+                        ->body(__('bz-user-management::bz-user-management.invite_success'))
                         ->success()
                         ->send();
                 }),
