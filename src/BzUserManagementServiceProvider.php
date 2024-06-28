@@ -22,6 +22,7 @@ class BzUserManagementServiceProvider extends PackageServiceProvider
             ->hasRoute('web')
             ->hasInstallCommand(function (InstallCommand $installCommand) {
                 $installCommand->publishMigrations();
+                $installCommand->publishConfigFile();
             });
     }
 

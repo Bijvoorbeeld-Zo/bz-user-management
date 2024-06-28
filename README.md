@@ -31,3 +31,5 @@ public function panel(Panel $panel): Panel
         ]);
 }
 ```
+
+## Publish assets
