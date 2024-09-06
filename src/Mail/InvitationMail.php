@@ -29,7 +29,7 @@ class InvitationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Invitation to join ' . config('app.name'),
+            subject: 'Uitnodiging voor het gebruik van ' . config('app.name'),
         );
     }
 
